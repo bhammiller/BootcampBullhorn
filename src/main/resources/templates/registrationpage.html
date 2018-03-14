@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <div th:replace="/basetemplate::headstuff"></div>
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="/basetemplate::headstuff"></div>
+<div class="wrapper">
+    <div class="sidebar" data-background-color="brown" data-active-color="danger">
+        <!--
+            Tip 1: you can change the color of the sidebar's background using: data-background-color="white | brown"
+            Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+        -->
+        <div class="logo">
+
+        </div>
+        <div class="sidebar-wrapper">
+
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav th:replace="/basetemplate::navbar">
+        </nav>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-s1">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <legend>Registration</legend>
+                            </div>
+
+                            <div class="card-content">
+                                    <form action="#" method="post" th:action="@{/register}" th:object="${newUser}">
+                                        <input type="hidden" th:field="*{id}" />
+                                        <div class="card card-plain">
+                                            <div class="content">
+                                                <div class="form-group">
+                                                    <input type="text" th:field="*{firstName}" placeholder="Your First Name" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" th:field="*{lastName}" placeholder="Your Last Name" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" th:field="*{userEmail}" placeholder="Your Email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" th:field="*{appUsername}" placeholder="Username" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" th:field="*{appPassword}" placeholder="Password" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div><p>A new account comes with the following official News API news categories preloaded into your account: Business,
+                                             Entertainment, General News, Health, Science, Sports, and Technology.<br/>These categories can be disabled on your User Profile Page.</p></div>
+                                            <div class="footer text-center">
+                                                <button type="submit" class="btn btn-fill btn-neutral btn-wd">Join</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                            </div>
+                        </div>  <!-- end card -->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<th:block th:replace="/basetemplate::bootstrapbottom"></th:block>
+</body>
+<th:block th:replace="/basetemplate::bootstrapbottom"></th:block>
+</html>
