@@ -32,8 +32,32 @@ public class AppUser {
     @Email
     private String userEmail;
 
+    private String displayImage;
+
+    private String displayImage;
+
     @CreationTimestamp
     Timestamp createdAt;
+
+    // Follow other Users
+    private List<AppUser> followedUsers;
+
+    public AppUser(List<AppUser> followedUsers, List<BullhornPosts> bullhornPostsList) {
+        this.followedUsers = followedUsers;
+        this.bullhornPostsList = bullhornPostsList;
+    }
+
+    public void addFollowedUser(AppUser appUser){
+        this.followedUsers.add(appUser);
+    }
+
+    public List<AppUser> getFollowedUsers() {
+        return followedUsers;
+    }
+
+    public void setFollowedUsers(List<AppUser> followedUsers) {
+        this.followedUsers = followedUsers;
+    }
 
     // Variable Getters and Setters
     public long getId() {
@@ -92,6 +116,22 @@ public class AppUser {
         this.createdAt = createdAt;
     }
 
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getDisplayImage() {
+        return displayImage;
+    }
+
+    public void setDisplayImage(String displayImage) {
+        this.displayImage = displayImage;
+    }
+
     // Connection to AppRole
     @ManyToMany(fetch = FetchType.EAGER)
     //This needs to be instantiated in the construtor so you can use it to add and remove individual roles
@@ -111,6 +151,22 @@ public class AppUser {
 
     public void addRole(AppRole role) {
         this.roles.add(role);
+    }
+
+    // Connection to BullhornPosts
+    @OneToMany(mappedBy = "appUser")
+    private List<BullhornPosts> bullhornPostsList;
+
+    public void addBullhornPPost(BullhornPosts bullhornPosts){
+        this.bullhornPostsList.add(bullhornPosts);
+    }
+
+    public List<BullhornPosts> getBullhornPostsList() {
+        return bullhornPostsList;
+    }
+
+    public void setBullhornPostsList(List<BullhornPosts> bullhornPostsList) {
+        this.bullhornPostsList = bullhornPostsList;
     }
 
     /*// Connection to LostItems
