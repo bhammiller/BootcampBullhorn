@@ -69,16 +69,26 @@ public class MainController {
     }
     // User Methods
 
-    public String addMessage(){
-        return "";
+    @GetMapping("/addmessage")
+    public String addMessage(Model model){
+        model.addAttribute("addmessage", new BullhornPosts());
+        return "addmessagepage";
     }
+    @PostMapping("/adddmessage")
     public String processMessageg(BindingResult result, Model model){
         if (result.hasErrors()){
-            return "";
+            return "addmessagepage";
         }else {
             return "";
         }
     }
+
+    @RequestMapping("/userpage/{id}")
+    public String showUserPosts(@PathVariable("id") long id, Model model){
+        model.addAttribute("usersposts",appUserRepository.findOne(id));
+        return "userpostspage";
+    }
+
 
     public String likeMessage(){
         return "";
@@ -111,5 +121,10 @@ public class MainController {
     public String showAllUsers(Model model){
         model.addAttribute("userlist", appUserRepository.findAll());
         return"userlistpage";
+    }
+
+    @RequestMapping("/follow/{id}")
+    public String followUser(@PathVariable("id")long id){
+        return "redirect:/userpage/{id}";
     }
 }

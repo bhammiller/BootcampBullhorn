@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 public class BullhornComments {
@@ -17,7 +18,9 @@ public class BullhornComments {
     private String commentMaker;
 
     @CreationTimestamp
-    Timestamp createdAt;
+    private LocalDateTime createDateTime;
+
+    private LocalDateTime displayCommentTime;
 
     // Getters and Setters
 
@@ -45,23 +48,33 @@ public class BullhornComments {
         this.commentMaker = commentMaker;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getCreateDateTime() {
+        return createDateTime;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
+    public void setCreateDateTime(LocalDateTime createDateTime) {
+        this.createDateTime = createDateTime;
     }
 
-    // Constructors
+    public LocalDateTime getDisplayCommentTime() {
+        return displayCommentTime;
+    }
+
+    public void setDisplayCommentTime(LocalDateTime displayCommentTime) {
+        this.displayCommentTime = displayCommentTime;
+    }
+
+// Constructors
 
     public BullhornComments() {
     }
 
-    public BullhornComments(String commentText, String commentMaker, Timestamp createdAt, BullhornPosts bullhornPosts) {
+    public BullhornComments(String commentText, String commentMaker,
+                            LocalDateTime createDateTime, LocalDateTime displayCommentTime, BullhornPosts bullhornPosts) {
         this.commentText = commentText;
         this.commentMaker = commentMaker;
-        this.createdAt = createdAt;
+        this.createDateTime = createDateTime;
+        this.displayCommentTime = displayCommentTime;
         this.bullhornPosts = bullhornPosts;
     }
 

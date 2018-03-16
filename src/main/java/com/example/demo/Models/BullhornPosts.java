@@ -4,6 +4,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -19,19 +20,22 @@ public class BullhornPosts {
     private Integer likeCounter;
 
     @CreationTimestamp
-    Timestamp createdAt;
+    private LocalDateTime createDateTime2;
+
+    private LocalDateTime displayPostTime;
 
     // Constructors
 
     public BullhornPosts() {
     }
 
-    public BullhornPosts(String messageText, String messageImage,
-                         Integer likeCounter, Timestamp createdAt, AppUser appUser, List<BullhornComments> bullhornCommentsList) {
+    public BullhornPosts(String messageText, String messageImage, Integer likeCounter, LocalDateTime createDateTime2,
+                         LocalDateTime displayPostTime, AppUser appUser, List<BullhornComments> bullhornCommentsList) {
         this.messageText = messageText;
         this.messageImage = messageImage;
         this.likeCounter = likeCounter;
-        this.createdAt = createdAt;
+        this.createDateTime2 = createDateTime2;
+        this.displayPostTime = displayPostTime;
         this.appUser = appUser;
         this.bullhornCommentsList = bullhornCommentsList;
     }
@@ -70,14 +74,21 @@ public class BullhornPosts {
         this.likeCounter = likeCounter;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getCreateDateTime2() {
+        return createDateTime2;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
+    public void setCreateDateTime2(LocalDateTime createDateTime2) {
+        this.createDateTime2 = createDateTime2;
     }
 
+    public LocalDateTime getDisplayPostTime() {
+        return displayPostTime;
+    }
+
+    public void setDisplayPostTime(LocalDateTime displayPostTime) {
+        this.displayPostTime = displayPostTime;
+    }
 
     // CONNECTIONS
     // Connection to AppUser
