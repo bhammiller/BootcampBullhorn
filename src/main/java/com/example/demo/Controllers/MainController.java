@@ -90,7 +90,8 @@ public class MainController {
     }
 
 
-    public String likeMessage(){
+    @RequestMapping("/likepost/{id}")
+    public String likeMessage(@PathVariable("id") long id){
         return "";
     }
 
@@ -103,6 +104,7 @@ public class MainController {
         return "messagepage";
     }
 
+    @PostMapping("/processmessage/{id}")
     public String processComment(@Valid @ModelAttribute("addcomment") BullhornComments bullhornComments,
                                  @PathVariable("id") long id, BindingResult result, Model model,
                                  Authentication authentication){

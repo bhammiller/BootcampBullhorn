@@ -40,17 +40,12 @@
                                     <tr>
                                         <th ></th>
                                         <th >Bullhorners</th>
-                                        <th ></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="appUsers : ${userlist}">
-                                        <td th:text="${appUsers.displayImage}"></td>
-                                        <td th:text="${appUsers.displayImage}"></td>
-
-                                        <td >
-                                            <a type="button" th:href="@{/addeditem/{id}(id=${appUser.id})}" class="btn btn-dark" role="button">Add</a>
-                                        </td>
+                                        <td><img th:src="${appUsers.displayImage}" alt="User Image" style="width:200px;height:200px;"/></td>
+                                        <a th:href="@{/userpage/{id}(id=${appUsers.id})}" th:text="${appUsers.displayName}"></a>
                                     </tr>
                                     </tbody>
                                 </table>

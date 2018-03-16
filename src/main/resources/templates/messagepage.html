@@ -1,10 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8">
+    <div th:replace="/basetemplate::headstuff"></div>
     <title>Title</title>
 </head>
 <body>
+<div th:replace="/basetemplate::headstuff"></div>
+<div class="wrapper">
+    <div class="sidebar" data-background-color="brown" data-active-color="danger">
+        <!--
+            Tip 1: you can change the color of the sidebar's background using: data-background-color="white | brown"
+            Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+        -->
+        <div class="logo">
 
+        </div>
+        <div class="sidebar-wrapper">
+
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav th:replace="/basetemplate::navbar">
+        </nav>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="header text-center">
+                                <!-- This is where the the user display goes -->
+                                <img th:src="${showmessage.messageImage}" alt="Post Image" style="width:200px;height:200px;"/>
+                                <h4 class="title" th:text="${showmessage.messageText}"></h4>
+                                <br />
+                                <p>Number of Likes</p>
+                                <p th:text="${showmessage.likeCounter}"></p>
+                                <a type="button" th:href="@{/likepost/{id}(id=${{showmessage.id})}" class="btn btn-dark" role="button">Like</a>
+                                <br />
+                                <form action="#"
+                                      th:action="@{/processmessage/{id}}"
+                                      th:object="${addcomment}"
+                                      method="post">
+                                    <input type="hidden" th:field="*{id}" />
+                                    <div class="form-group row">
+                                        <label for="commentText" class="col-sm-2 col-form-label">Add Comment</label>
+                                        <div class="col-sm-5">
+                                            <textarea class="form-control" rows="5" id="commentText" th:field="*{commentText}" placeholder="Add Comment..."></textarea>
+                                            <span th:if="${#fields.hasErrors('commentText')}"
+                                                  th:errors="*{commentText}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-10">
+                                            <button type="submit" class="btn btn-primary">Add Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- this is where the comment input goes -->
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <div class="header text-center">
+                                    <h1 class="title">Comments</h1>
+                                    <!--<h4 class="category" th:text="${message}"></h4>-->
+                                    <br />
+                                </div>
+                                <table class="table table-bigboy">
+                                    <thead>
+                                    <tr>
+                                        <th >Comment</th>
+                                        <th>Commentator</th>
+                                        <th>Posted On</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="comments : ${showcomments}">
+                                        <td th:text="${comments.commentText}"></td>
+                                        <td th:text="${comments.commentMaker}"></td>
+                                        <td th:text="${comments.displayCommentTime}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div><!--  end card  -->
+                    </div>
+                    <!-- your content here -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<th:block th:replace="/basetemplate::bootstrapbottom"></th:block>
 </body>
 </html>

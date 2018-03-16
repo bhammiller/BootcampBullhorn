@@ -32,7 +32,10 @@
                         <div class="card">
                             <div class="header text-center">
                                 <!-- This is where the the user display goes -->
-                                <h4 class="title"></h4>
+                                <img th:src="${usersposts.displayImage}" alt="User Image" style="width:200px;height:200px;"/>
+                                <h4 class="title" th:text="${usersposts.displayName}"></h4>
+                                <br />
+                                <a type="button" th:href="@{/follow/{id}(id=${{usersposts.id})}" class="btn btn-dark" role="button">Follow</a>
                                 <br />
                                 <!-- this is where the follow button goes -->
                             </div>
@@ -45,12 +48,22 @@
                                 <table class="table table-bigboy">
                                     <thead>
                                     <tr>
+                                        <th></th>
                                         <th >Posts</th>
+                                        <th>Likes</th>
+                                        <th>Posted On</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="appUsers : ${userlist}">
-                                        <td th:text="${appUsers.displayImage}"></td>
+                                    <tr th:each="thePosts : ${displayedPosts}">
+                                        <td>
+                                            <img th:src="${thePosts.messageImage}" alt="Post Image" style="width:200px;height:200px;"/>
+                                        </td>
+                                        <td >
+                                            <a th:href="@{/message/{id}(id=${{thePosts.id})}" th:text="${thePosts.messageText}">Follow</a>
+                                        </td>
+                                        <td th:text="${thePosts.likeCounter}"></td>
+                                        <td th:text="${thePosts.displayPostTime}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
