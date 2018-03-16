@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.List;
@@ -32,6 +33,8 @@ public class AppUser {
     @Email
     private String userEmail;
 
+    @NotNull
+    @NotEmpty
     private String displayName;
 
     private String displayImage;
@@ -40,6 +43,7 @@ public class AppUser {
     Timestamp createdAt;
 
     // Follow other Users
+    @Transient
     private List<AppUser> followedUsers;
 
     public AppUser(List<AppUser> followedUsers, List<BullhornPosts> bullhornPostsList) {

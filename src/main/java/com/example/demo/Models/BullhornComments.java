@@ -17,10 +17,12 @@ public class BullhornComments {
 
     private String commentMaker;
 
+/*
     @CreationTimestamp
+*/
     private LocalDateTime createDateTime;
 
-    private LocalDateTime displayCommentTime;
+    private String displayCommentTime;
 
     // Getters and Setters
 
@@ -56,21 +58,21 @@ public class BullhornComments {
         this.createDateTime = createDateTime;
     }
 
-    public LocalDateTime getDisplayCommentTime() {
+    public String getDisplayCommentTime() {
         return displayCommentTime;
     }
 
-    public void setDisplayCommentTime(LocalDateTime displayCommentTime) {
+    public void setDisplayCommentTime(String displayCommentTime) {
         this.displayCommentTime = displayCommentTime;
     }
 
-// Constructors
+    // Constructors
 
     public BullhornComments() {
     }
 
     public BullhornComments(String commentText, String commentMaker,
-                            LocalDateTime createDateTime, LocalDateTime displayCommentTime, BullhornPosts bullhornPosts) {
+                            LocalDateTime createDateTime, String displayCommentTime, BullhornPosts bullhornPosts) {
         this.commentText = commentText;
         this.commentMaker = commentMaker;
         this.createDateTime = createDateTime;

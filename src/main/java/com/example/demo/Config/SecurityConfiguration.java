@@ -29,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         http
 
                 .authorizeRequests()
-                .antMatchers("/", "/css/**","/fonts/**","/js/**","/img/**","/sass/**").permitAll()
+                .antMatchers("/**", "/css/**","/fonts/**","/js/**","/img/**","/sass/**").permitAll()
                 /*.antMatchers("/userslist","/addeditem/{id}","/processaddedtem","/tofound/{id}",
                         "/tolost/{id}","/addeditem2","/processaddedtem2").hasAuthority("ADMIN")*/
                 .anyRequest().authenticated();

@@ -40,10 +40,11 @@ public class DataLoader implements CommandLineRunner {
         appUser.setUserEmail("g1@gmail.com");
         appUser.setAppUsername("john");
         appUser.setAppPassword("password1");
+        appUser.setDisplayName("Johnny");
         appUserRepository.save(appUser);
         appUser.addRole(appRoleRepository.findAppRoleByRoleName("USER"));
         appUserRepository.save(appUser);
-        // User 2
+        /*// User 2
         appUser = new AppUser();
         appUser.setFirstName("Jacob");
         appUser.setLastName("Smith");
@@ -52,7 +53,7 @@ public class DataLoader implements CommandLineRunner {
         appUser.setAppPassword("password2");
         appUserRepository.save(appUser);
         appUser.addRole(appRoleRepository.findAppRoleByRoleName("USER"));
-        appUserRepository.save(appUser);
+        appUserRepository.save(appUser);*/
         // User 3
         appUser = new AppUser();
         appUser.setFirstName("Jane");
@@ -60,6 +61,7 @@ public class DataLoader implements CommandLineRunner {
         appUser.setUserEmail("g3@gmail.com");
         appUser.setAppUsername("jane");
         appUser.setAppPassword("password3");
+        appUser.setDisplayName("Painkiller");
         appUserRepository.save(appUser);
         appUser.addRole(appRoleRepository.findAppRoleByRoleName("USER"));
         appUserRepository.save(appUser);

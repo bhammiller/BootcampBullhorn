@@ -35,7 +35,7 @@
                                 <img th:src="${usersposts.displayImage}" alt="User Image" style="width:200px;height:200px;"/>
                                 <h4 class="title" th:text="${usersposts.displayName}"></h4>
                                 <br />
-                                <a type="button" th:href="@{/follow/{id}(id=${{usersposts.id})}" class="btn btn-dark" role="button">Follow</a>
+                                <a type="button" th:href="@{/follow/{id}(id=${usersposts.id})}" class="btn btn-dark" role="button">Follow</a>
                                 <br />
                                 <!-- this is where the follow button goes -->
                             </div>
@@ -60,7 +60,7 @@
                                             <img th:src="${thePosts.messageImage}" alt="Post Image" style="width:200px;height:200px;"/>
                                         </td>
                                         <td >
-                                            <a th:href="@{/message/{id}(id=${{thePosts.id})}" th:text="${thePosts.messageText}">Follow</a>
+                                            <a th:href="@{/message/{id}(id=${thePosts.id})}" th:text="${thePosts.messageText}">Follow</a>
                                         </td>
                                         <td th:text="${thePosts.likeCounter}"></td>
                                         <td th:text="${thePosts.displayPostTime}"></td>

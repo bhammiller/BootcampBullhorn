@@ -63,7 +63,7 @@
                 <span class="icon-bar bar2"></span>
                 <span class="icon-bar bar3"></span>
             </button>
-            <span class="navbar-brand" >Brandon's News Service</span>
+            <span class="navbar-brand" >Bootcamp Bullhorn</span>
         </div>
         <div class="collapse navbar-collapse">
 
@@ -99,8 +99,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li ><a href="/">Home</a></li>
-                        <li sec:authorize="hasAuthority('USER')"><a href="/addtopic">User Profile</a></li>
-                        <li sec:authorize="hasAuthority('USER')"><a href="/personalnews">Personalized News</a></li>
+                        <li ><a href="/userlist">User List</a></li>
+                        <li sec:authorize="hasAuthority('USER')"><a href="/addmessage">Add Post</a></li>
+                        <li sec:authorize="hasAuthority('USER')"><a href="/editprofile">Edit Profile</a></li>
                         <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
                         <li sec:authorize="isAnonymous()"><a href="/register">Register</a></li>
                         <li sec:authorize="hasAuthority('USER')"><a href="/logout">Logout</a></li>

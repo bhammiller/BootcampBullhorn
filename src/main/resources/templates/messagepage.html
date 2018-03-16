@@ -37,10 +37,10 @@
                                 <br />
                                 <p>Number of Likes</p>
                                 <p th:text="${showmessage.likeCounter}"></p>
-                                <a type="button" th:href="@{/likepost/{id}(id=${{showmessage.id})}" class="btn btn-dark" role="button">Like</a>
+                                <a type="button" th:href="@{/likepost/{id}(id=${showmessage.id})}" class="btn btn-dark" role="button">Like</a>
                                 <br />
                                 <form action="#"
-                                      th:action="@{/processmessage/{id}}"
+                                      th:action="@{/processmessage}"
                                       th:object="${addcomment}"
                                       method="post">
                                     <input type="hidden" th:field="*{id}" />

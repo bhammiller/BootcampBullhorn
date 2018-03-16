@@ -31,22 +31,34 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="header text-center">
-                                <h4 class="title">Registered Bullhorners</h4>
+                                <h4 class="title">Your Followed Posts</h4>
                                 <br />
                             </div>
                             <div class="content table-responsive table-full-width">
+                                <div class="header text-center">
+                                    <h1 class="title">User's Posts</h1>
+                                    <!--<h4 class="category" th:text="${message}"></h4>-->
+                                    <br />
+                                </div>
                                 <table class="table table-bigboy">
                                     <thead>
                                     <tr>
-                                        <th ></th>
-                                        <th >Bullhorners</th>
+                                        <th></th>
+                                        <th >Posts</th>
+                                        <th>Likes</th>
+                                        <th>Posted On</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="appUsers : ${userlist}">
-                                        <td><img th:src="${appUsers.displayImage}" alt="User Image" style="width:200px;height:200px;"/></td>
-                                        <td><a th:href="@{/userpage/{id}(id=${appUsers.id})}" th:text="${appUsers.displayName}"></a>
+                                    <tr th:each="thePosts : ${displayedPosts}">
+                                        <td>
+                                            <img th:src="${thePosts.messageImage}" alt="Post Image" style="width:200px;height:200px;"/>
                                         </td>
+                                        <td >
+                                            <a th:href="@{/message/{id}(id=${{thePosts.id})}" th:text="${thePosts.messageText}">Follow</a>
+                                        </td>
+                                        <td th:text="${thePosts.likeCounter}"></td>
+                                        <td th:text="${thePosts.displayPostTime}"></td>
                                     </tr>
                                     </tbody>
                                 </table>

@@ -19,10 +19,12 @@ public class BullhornPosts {
 
     private Integer likeCounter;
 
+/*
     @CreationTimestamp
+*/
     private LocalDateTime createDateTime2;
 
-    private LocalDateTime displayPostTime;
+    private String displayPostTime;
 
     // Constructors
 
@@ -30,7 +32,7 @@ public class BullhornPosts {
     }
 
     public BullhornPosts(String messageText, String messageImage, Integer likeCounter, LocalDateTime createDateTime2,
-                         LocalDateTime displayPostTime, AppUser appUser, List<BullhornComments> bullhornCommentsList) {
+                         String displayPostTime, AppUser appUser, List<BullhornComments> bullhornCommentsList) {
         this.messageText = messageText;
         this.messageImage = messageImage;
         this.likeCounter = likeCounter;
@@ -82,11 +84,11 @@ public class BullhornPosts {
         this.createDateTime2 = createDateTime2;
     }
 
-    public LocalDateTime getDisplayPostTime() {
+    public String getDisplayPostTime() {
         return displayPostTime;
     }
 
-    public void setDisplayPostTime(LocalDateTime displayPostTime) {
+    public void setDisplayPostTime(String displayPostTime) {
         this.displayPostTime = displayPostTime;
     }
 
