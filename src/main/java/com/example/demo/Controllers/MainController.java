@@ -1,5 +1,6 @@
 package com.example.demo.Controllers;
 
+import com.cloudinary.utils.ObjectUtils;
 import com.example.demo.Config.CloudinaryConfig;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.Models.*;
 import com.example.demo.Repositories.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.io.IOException;
+import java.util.Map;
 
 @Controller
 public class MainController {
@@ -84,7 +88,8 @@ public class MainController {
     }
     @PostMapping("/addmessage")
     public String processMessageg(@ModelAttribute("addmessage") BullhornPosts bullhornPosts, BindingResult result,
-                                  Model model, Authentication authentication){
+                                  Model model, Authentication authentication,
+                                  @RequestParam("file")MultipartFile file){
         if (result.hasErrors()){
             return "addmessagepage";
         }else {
