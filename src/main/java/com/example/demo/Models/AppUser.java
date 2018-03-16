@@ -32,7 +32,7 @@ public class AppUser {
     @Email
     private String userEmail;
 
-    private String displayImage;
+    private String displayName;
 
     private String displayImage;
 
