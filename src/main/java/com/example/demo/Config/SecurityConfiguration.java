@@ -29,9 +29,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         http
 
                 .authorizeRequests()
-                .antMatchers("/**", "/css/**","/fonts/**","/js/**","/img/**","/sass/**").permitAll()
-                /*.antMatchers("/userslist","/addeditem/{id}","/processaddedtem","/tofound/{id}",
-                        "/tolost/{id}","/addeditem2","/processaddedtem2").hasAuthority("ADMIN")*/
+                .antMatchers("/","/login","/register","/userlist", "/css/**","/fonts/**","/js/**","/img/**","/sass/**").permitAll()
+                .antMatchers("/addmessage","/userpage/**","/likepost/**","/message/**","/processmessage","/editprofile","/follow/**").hasAuthority("USER")
                 .anyRequest().authenticated();
 
         http

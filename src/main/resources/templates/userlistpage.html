@@ -45,8 +45,9 @@
                                     <tbody>
                                     <tr th:each="appUsers : ${userlist}">
                                         <td><img th:src="${appUsers.displayImage}" alt="User Image" style="width:200px;height:200px;"/></td>
-                                        <td><a th:href="@{/userpage/{id}(id=${appUsers.id})}" th:text="${appUsers.displayName}"></a>
+                                        <td sec:authorize="isAuthenticated()"><a th:href="@{/userpage/{id}(id=${appUsers.id})}" th:text="${appUsers.displayName}"></a>
                                         </td>
+                                        <td sec:authorize="isAnonymous()" th:text="${appUsers.displayName}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
